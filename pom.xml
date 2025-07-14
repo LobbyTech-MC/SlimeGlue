@@ -102,7 +102,7 @@
         <dependency>
             <groupId>com.github.Slimefun</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-32</version>
+            <version>RC-37</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -110,6 +110,13 @@
             <artifactId>kingdoms</artifactId>
             <version>1.13.9</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ghostchu</groupId>
+            <artifactId>quickshop-bukkit</artifactId>
+            <version>6.2.0.8</version>
+            <scope>provided</scope>
+            <classifier>shaded</classifier>
         </dependency>
         <dependency>
             <groupId>org.maxgamer</groupId>
@@ -130,20 +137,6 @@
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.bekvon.bukkit</groupId>
-            <artifactId>residence</artifactId>
-            <version>4.9.3.5</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/Residence.jar</systemPath>
-            <exclusions>
-                <exclusion>
-                    <!-- We don't need any of the dependencies -->
                     <groupId>*</groupId>
                     <artifactId>*</artifactId>
                 </exclusion>
