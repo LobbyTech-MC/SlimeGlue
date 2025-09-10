@@ -1,14 +1,14 @@
 package com.xzavier0722.mc.plugin.slimeglue.module;
 
-import org.bukkit.Location;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.plugin.Plugin;
-import org.kingdoms.constants.land.Land;
-import org.kingdoms.constants.land.location.SimpleChunkLocation;
-
 import com.xzavier0722.mc.plugin.slimeglue.api.ACompatibilityModule;
 import com.xzavier0722.mc.plugin.slimeglue.api.protection.IBlockProtectionHandler;
 import com.xzavier0722.mc.plugin.slimeglue.api.protection.IPlayerProtectionHandler;
+import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.plugin.Plugin;
+import org.kingdoms.constants.group.Kingdom;
+import org.kingdoms.constants.land.Land;
+import org.kingdoms.constants.land.location.SimpleChunkLocation;
 
 public class KingdomsXModule extends ACompatibilityModule {
 
@@ -60,10 +60,12 @@ public class KingdomsXModule extends ACompatibilityModule {
         if (land == null || !land.isClaimed()) {
             return true;
         }
-        return true;
 
-        /*
         Kingdom kingdom = land.getKingdom();
+        
+        return  kingdom == null || p.getUniqueId().equals(kingdom.getKingId()) || kingdom.isMember(p);
+        /*
+        
         return verbose(
                 "canAccess: ret=",
                 kingdom == null || p.getUniqueId().equals(kingdom.getKingId()) || kingdom.isMember(p)
