@@ -9,7 +9,10 @@ import org.bukkit.plugin.Plugin;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.land.Land;
 import org.kingdoms.constants.land.location.SimpleChunkLocation;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 
+@EnableAsync
 public class KingdomsXModule extends ACompatibilityModule {
 
     public KingdomsXModule() {
@@ -54,6 +57,7 @@ public class KingdomsXModule extends ACompatibilityModule {
         });
     }
 
+    @Async
     private boolean canAccess(OfflinePlayer p, Location l) {
         Land land = SimpleChunkLocation.of(l).getLand();
         //verbose("canAccess: " + land);
@@ -62,12 +66,12 @@ public class KingdomsXModule extends ACompatibilityModule {
         }
 
         Kingdom kingdom = land.getKingdom();
-        
-        return  kingdom == null || p.getUniqueId().equals(kingdom.getKingId()) || kingdom.isMember(p);
+        boolean isOwner = p.getUniqueId().equals(kingdom.getKingId());
+        return  kingdom == null || isOwner || kingdom.isMember(p);
         /*
         
         return verbose(
-                "canAccess: ret=",
+                 "canAccess: ret=",
                 kingdom == null || p.getUniqueId().equals(kingdom.getKingId()) || kingdom.isMember(p)
         );
         */
