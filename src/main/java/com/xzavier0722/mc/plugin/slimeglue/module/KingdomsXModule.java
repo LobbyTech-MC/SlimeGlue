@@ -66,8 +66,19 @@ public class KingdomsXModule extends ACompatibilityModule {
         }
 
         Kingdom kingdom = land.getKingdom();
-        boolean isOwner = p.getUniqueId().equals(kingdom.getKingId());
-        return  kingdom == null || isOwner || kingdom.isMember(p);
+        if (kingdom == null) {
+        	return true;
+        } else if (kingdom.isMember(p)) {
+        	return true;
+        } else {
+        	boolean isOwner = p.getUniqueId().equals(kingdom.getKingId());//IO耗时操作最后实在不行再进行
+        	if (isOwner) {
+        		return true;
+        	}
+        }
+        
+        return false;
+        
         /*
         
         return verbose(
